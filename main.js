@@ -4,12 +4,11 @@ var frames = [
 
 function sumScore (game) {
   var total = 0;
-
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 9; i++) {
      var sum = game[i][0] + game[i][1];
      if (sum === 10) { //if a strike or a spare
        sum += game[i + 1][0]; //add ball 1, 1 frame over
-        if (game[i][0] === 10) { //if a strike
+       if (game[i][0] === 10) { //if a strike
           if (sum === 20) { //if follow up is a strike
             sum += game[i+2][0]; //ad ball 1 two frames over
           } else {
@@ -19,11 +18,9 @@ function sumScore (game) {
      }
      console.log(total + " + " + sum);
        total += sum;
-     }
-     return total;
-   }
-
-console.log(sumScore(frames));
-// function main() {
-//   return sumScore(frames);
-// }
+  }
+  for (var i = 0; i < game[9].length; i++) {
+    total += game[9][i];
+  }
+  return total;
+}
